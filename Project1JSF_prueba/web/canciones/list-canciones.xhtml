@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+        <h:head>
+             <title>#{str.cancionesListTitle}</title>
+        </h:head>
+
+        <h:body>
+            <ui:composition template="/templates/template.xhtml">
+                <ui:define name="contenido">
+                    <h1>#{str.cancionListTitle}</h1>
+                    <h:form>
+                        <p:commandButton value="#{str.buttonAdd}" action="#{cancionBean.iniciar()}"> </p:commandButton>
+                    </h:form>
+                    <p:dataTable value="#{cancionBean.canciones}" var="can">
+                        <p:column headerText="#{str.action}">
+                            <h:form>
+                                <p:commandButton value="#{str.buttonEdit}" action="#{cancionBean.editar(can)}"></p:commandButton>
+                            </h:form>
+                        </p:column>
+                        <p:column headerText="#{str.cancionNameHeader}">
+                            <p:outputLabel value="#{can.nombre}"></p:outputLabel>
+                            </p:column>
+                        <p:column headerText="#{str.musicaNameHeader}">
+                            <p:outputLabel value="#{can.musica.nombre}"></p:outputLabel>
+                        </p:column>
+                        
+                         <p:column headerText="#{str.autorNameHeader}">
+                             <p:outputLabel value="#{can.autor.nombre}"></p:outputLabel>
+                             </p:column>
+                        
+                         <p:column headerText="#{str.disqueraNameHeader}">
+                             <p:outputLabel value="#{can.disquera.nombre}"></p:outputLabel>
+                             </p:column>
+                        
+                         <p:column headerText="#{str.generoNameHeader}">
+                             <p:outputLabel value="#{can.genero.nombre}"></p:outputLabel>
+                             </p:column>
+                        
+                        <p:column headerText="#{str.tituloNameHeader}">
+                             <p:outputLabel value="#{can.titulo}"></p:outputLabel>
+                             </p:column>
+                        
+                          
+                             
+                        
+                    </p:dataTable>
+                </ui:define>
+            </ui:composition>
+        </h:body>
+</html>

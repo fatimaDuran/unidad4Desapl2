@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.cancionFormTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.cancionFormHeader}</h2>
+                <p:fieldset legend="#{str.cancionLegendForm}">
+                <h:form>
+                    <p:panelGrid columns="1"> 
+                         <p:selectOneMenu value="#{cancionBean.cancion.musica.idMusica}">
+                                <f:selectItems value="#{cancionBean.musicas}" var="mu" 
+                                               itemLabel="#{mu.nombre}" itemValue="#{mu.idMusica}"></f:selectItems>                                     
+                            </p:selectOneMenu>   
+                             <p:selectOneMenu value="#{cancionBean.cancion.autor.idAutor}">
+                                <f:selectItems value="#{cancionBean.autores}" var="au" 
+                                               itemLabel="#{au.nombre}" itemValue="#{au.idAutor}"></f:selectItems>                                     
+                            </p:selectOneMenu>  
+                             <p:selectOneMenu value="#{cancionBean.cancion.disquera.idDisquera}">
+                                <f:selectItems value="#{cancionBean.disqueras}" var="dis" 
+                                               itemLabel="#{dis.nombre}" itemValue="#{dis.idDisquera}"></f:selectItems>                                     
+                            </p:selectOneMenu>  
+                             <p:selectOneMenu value="#{cancionBean.cancion.genero.idGenero}">
+                                <f:selectItems value="#{cancionBean.generos}" var="g" 
+                                               itemLabel="#{g.nombre}" itemValue="#{g.idGenero}"></f:selectItems>                                     
+                            </p:selectOneMenu>  
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    <p:inputText placeholder="#{str.cancionNamePrompt}" value="#{cancionBean.cancion.nombre}"></p:inputText>
+                     <p:inputText placeholder="#{str.cancionTituloPrompt}" value="#{cancionBean.cancion.titulo}"></p:inputText>
+                     
+                      
+                    </p:panelGrid>
+                    <p:commandButton value="#{str.buttonSave}" action="#{cancionBean.guardar()}"></p:commandButton>
+                    <p:commandButton value="#{str.buttonDelete}" action="#{cancionBean.eliminar()}"></p:commandButton>
+                    <p:commandButton value="#{str.buttonCancel}" action="#{cancionBean.cancelar()}"></p:commandButton>
+                </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

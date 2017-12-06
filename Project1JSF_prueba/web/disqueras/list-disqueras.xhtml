@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+        <h:head>
+             <title>#{str.disqueraListTitle}</title>
+        </h:head>
+
+        <h:body>
+            <ui:composition template="/templates/template.xhtml">
+                <ui:define name="contenido">
+                    <h1>#{str.disqueraListTitle}</h1>
+                    <h:form>
+                        <p:commandButton value="#{str.buttonAdd}" action="#{disqueraBean.iniciar()}" />
+                    </h:form>
+                    <p:dataTable value="#{disqueraBean.disqueras}" var="dis">
+                        <p:column headerText="#{str.action}">
+                            <h:form>
+                                <p:commandButton value="#{str.buttonEdit}" action="#{disqueraBean.editar(dis)}" />
+                            </h:form>
+                        </p:column>
+                        <p:column headerText="#{str.disqueraHeader}">
+                            <p:outputLabel value="#{dis.nombre}"></p:outputLabel>
+                        </p:column>
+                        
+                         <p:column headerText="#{str.categoriaHeader}">
+                            <p:outputLabel value="#{dis.categoria}"></p:outputLabel>
+                            
+                        </p:column>
+                        
+                         <p:column headerText="#{str.nivelHeader}">
+                            <p:outputLabel value="#{dis.nivel}"></p:outputLabel>
+                        </p:column>
+                        
+                        
+                    </p:dataTable>
+                </ui:define>
+            </ui:composition>
+        </h:body>
+</html>
